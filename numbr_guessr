@@ -1,0 +1,31 @@
+import random
+
+print("Bei diesem Spiel geht es darum eine zufällig generierte Zahl zu erraten.")
+print("Die Zahl befindet sich im Intervall von Min bis 100.")
+print("Min ist die untere Grenze, die du selbst festlegen darfst.")
+print("Je höher die Grenze, desto einfacher ist das Spiel.")
+
+Min = int(input("Gib hier die untere Grenze für den Zahlenbereich ein: "))
+
+while Min >= 100:
+    print("Fehler: Die untere Grenze ist zu groß! Sie darf nicht größer als 99 sein.")
+    Min = int(input("Gib hier die untere Grenze für den Zahlenbereich ein: "))
+
+z = random.randint(Min, 100)
+t = 10
+
+for x in range(1, 12):
+    if x in range(1, 11):
+        print("Versuch ", x)
+        g = int(input("Gib hier deinen Tipp ab: "))
+        while g not in range(Min, 100):
+            print("Fehler: Du musst eine ganze Zahl aus dem Intervall von Min bis 100 eingeben!")
+            g = int(input("Gib hier deinen Tipp ab: "))
+        if g == z:
+            print("Richtig geraten! Die gesuchte Zahl war: ", z)
+            break
+        else:
+            t -= 1
+            print("Leider falsch geraten. Du hast noch", t, "Versuche.")
+    else:
+        print("Die gesuchte Zahl war: ", z)
